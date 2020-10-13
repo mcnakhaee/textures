@@ -1,0 +1,10 @@
+wheel
+numpy
+pandas
+pytest
+nltk
+spacy
+pyenchant
+textblob
+textstat
+langdetect
