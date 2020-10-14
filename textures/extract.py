@@ -46,3 +46,12 @@ def extract_emojis(text):
      """
     RE_EMOJI = re.compile('[\U00010000-\U0010ffff]', flags=re.UNICODE)
     return RE_EMOJI.findall(text)
+
+def extract_numbers(text):
+    """
+     This function extracts and returns all numbers found in a string variable.
+     :param text: a string variable
+     :return: a list of characters
+     """
+
+    return re.findall(r'\d+', text)
