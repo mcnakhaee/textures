@@ -20,11 +20,13 @@ def extract_features(df, text_col='text',
                      n_unique_tokens=True,
                      n_words=True,
                      n_unique_words=True,
+                     n_stopwords = True,
                      n_characters=True,
                      n_unique_characters=True,
                      n_unique_urls=True,
                      n_upper=True,
                      n_lower=True,
+                     n_numbers = True,
                      n_puncts=True,
                      n_exclaims=True,
                      n_extraspace=True,
@@ -52,6 +54,7 @@ def extract_features(df, text_col='text',
     :param n_unique_urls:
     :param n_upper:
     :param n_lower:
+    :param n_numbers:
     :param n_puncts:
     :param n_exclaims:
     :param n_extraspace:
@@ -67,6 +70,7 @@ def extract_features(df, text_col='text',
         df['nlp'] = df[text_col].apply(lambda x: nlp(x, disable=['tagger', 'parser']))
         df['n_entities'] = df['nlp'].apply(lambda x: len([ent for ent in x.ents]))
         df['tokens'] = df['nlp'].apply(lambda x: [token.text for token in x])
+        df['n_stopwords'] = df['nlp'].apply(lambda x: sum([token.is_stop for token in x]))
         df['n_tokens'] = df['tokens'].apply(lambda x: len(x))
         df['n_unique_tokens'] = df['tokens'].apply(lambda x: len(set(x)))
     first_person_pronouns = ["i", "me", "myself", "my", "mine", "this"]
@@ -125,6 +129,8 @@ def extract_features(df, text_col='text',
         df['n_upper'] = df[text_col].apply(lambda x: len(re.findall(r'[A-Z]', x)))
     if n_lower:
         df['n_lower'] = df[text_col].apply(lambda x: len(re.findall(r'[a-z]', x)))
+    if n_numbers:
+        df['n_numbers'] = df[text_col].apply(lambda x: len(re.findall(r'\d+', x)))
     if n_puncts:
         df['n_puncts'] = df[text_col].apply(lambda x: len([c for c in x if c not in string.punctuation]))
     if n_exclaims:
