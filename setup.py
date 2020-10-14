@@ -1,7 +1,7 @@
 from setuptools import setup
 import setuptools
 setup(name='textures',
-      version='0.1.4',
+      version='0.1.5',
       url="https://github.com/mcnakhaee/textures",
       description="A python package to extract features from text data",
       long_description=open('DESCRIPTION.rst').read(),

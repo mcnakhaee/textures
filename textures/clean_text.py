@@ -4,7 +4,7 @@ import string
 #To Do: remove just mentions not emails
 def remove_mentions(text):
     """
-      Removes all mentions (characters that start with @ sign) from a string input.
+      Removes all mentions (tokens that start with @ sign) from a string input.
      :param text: a string variable
      :return: a list of characters
      """
@@ -13,7 +13,7 @@ def remove_mentions(text):
 def remove_hashtags(text):
 
     """
-     Removes all hashtags (characters that start with # sign) from a string input.
+     Removes all hashtags (tokens that start with # sign) from a string input.
      :param text: a string variable
      :return: a list of characters
      """
@@ -22,7 +22,7 @@ def remove_hashtags(text):
 
 def remove_urls(text):
     """
-     This function removes all URLs found a string input.
+     This function removes all URLs from a string input.
      :param text: a string variable
      :return: a list of characters
      """
@@ -31,7 +31,7 @@ def remove_urls(text):
 
 def remove_emails(text):
     """
-     removes all caps (all capitals) letters from a string input.
+     removes all email addresses from a string input.
      :param text: a string variable
      :return: a list of characters
      """
@@ -61,7 +61,7 @@ def remove_hashtag_symbols(text):
     """
     Remove all # symbols from a string input.
     :param text: a string variable
-    :return:
+    :return: a list of characters
     """
     return text.replace('#','')
 
@@ -69,7 +69,7 @@ def remove_at_symbols(text):
     """
     Remove all @ symbols from a string input.
     :param text: a string variable
-    :return:
+    :return: a list of characters
     """
     return text.replace('@', '')
 
@@ -77,10 +77,14 @@ def remove_punctuations(text):
     """
     Remove all punctuations from a string input.
     :param text:a string variable
-    :return:
+    :return: a list of characters
     """
     return text.translate(str.maketrans('', '', string.punctuation))
 
-def remove_digits(text):
-
+def remove_numbers(text):
+    """
+    Remove all numbers from a string input.
+    :param text:a string variable
+    :return: a list of characters
+    """
     return re.sub(r'\d+', '',text)
