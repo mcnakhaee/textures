@@ -80,3 +80,7 @@ def remove_punctuations(text):
     :return:
     """
     return text.translate(str.maketrans('', '', string.punctuation))
+
+def remove_digits(text):
+
+    return re.sub(r'\d+', '',text)
