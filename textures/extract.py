@@ -20,7 +20,7 @@ def extract_urls(text):
      :param text: a string variable
      :return: a list of characters
      """
-    return re.findall(r'(https?://[^\s]+)', text)
+    return re.findall(r'((www\.|http://|https://)(www\.)*.*?(?=(www\.|http://|https://|$)))', text)
 def extract_emails(text):
     """
      This function extracts and returns all emails found in a string variable.
@@ -29,13 +29,28 @@ def extract_emails(text):
      """
     return re.findall(r'([\w0-9._-]+@[\w0-9._-]+\.[\w0-9_-]+)', text)
 
-def extract_all_caps(text):
+def extract_upper(text):
     """
      This function extracts and returns all caps (all capitals) letters found in a string variable.
      :param text: a string variable
      :return: a list of characters
      """
     return re.findall(r"(\b(?:[A-Z]+[a-z]?[A-Z]*|[A-Z]*[a-z]?[A-Z]+)\b(?:\s+(?:[A-Z]+[a-z]?[A-Z]*|[A-Z]*[a-z]?[A-Z]+)\b)*)", text)
+def extract_lower(text):
+    """
+     This function extracts and returns lower case words found in a string variable.
+     :param text: a string variable
+     :return: a list of characters
+     """
+    return re.findall(r'[a-z]+',text)
+
+def extract_title(text):
+    """
+     This function extracts and returns title case words found in a string variable.
+     :param text: a string variable
+     :return: a list of characters
+     """
+    return re.findall(r'\b[A-Z][a-z]+', text)
 
 def extract_emojis(text):
     """
