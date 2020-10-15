@@ -1,1 +1,3 @@
 # textures
+
+[![PyPI version](https://badge.fury.io/py/textures.svg)](https://badge.fury.io/py/textures) [![GitHub version](https://badge.fury.io/gh/mcnakhaee%2Ftextures.svg)](https://badge.fury.io/gh/mcnakhaee%2Ftextures)[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) [![PyPI download total](https://img.shields.io/pypi/dt/ansicolortags.svg)](https://pypi.python.org/pypi/textures/)
