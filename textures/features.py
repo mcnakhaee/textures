@@ -4,7 +4,7 @@ import re
 from textblob import TextBlob
 import enchant
 import string
-from textures.extract import *
+from textures.find import *
 from langdetect import detect
 import textstat
 
@@ -74,7 +74,7 @@ def extract_features(df, text_col='text',
     (1, 34)
     """
     if use_emoji_features:
-        df['n_emojis'] = df[text_col].apply(lambda x: len(extract_emojis(x)))
+        df['n_emojis'] = df[text_col].apply(lambda x: len(find_emojis(x)))
     if use_spacy_features:
         nlp = spacy.load('en_core_web_sm')
         df['nlp'] = df[text_col].apply(lambda x: nlp(x, disable=['tagger', 'parser']))
@@ -122,13 +122,13 @@ def extract_features(df, text_col='text',
     df['polarity'] = df['textblob'].apply(lambda x: x.sentiment.polarity)
     df['subjectivity'] = df['textblob'].apply(lambda x: x.sentiment.subjectivity)
     if n_hashtags == True:
-        df['n_hashtags'] = df[text_col].apply(lambda x: len(extract_hashtags(x)))
+        df['n_hashtags'] = df[text_col].apply(lambda x: len(find_hashtags(x)))
     if n_unique_hashtags == True:
-        df['n_unique_hashtags'] = df[text_col].apply(lambda x: len(set(extract_hashtags(x))))
+        df['n_unique_hashtags'] = df[text_col].apply(lambda x: len(set(find_hashtags(x))))
     if n_mentions == True:
-        df['n_mentions'] = df[text_col].apply(lambda x: len(extract_mentions(x)))
+        df['n_mentions'] = df[text_col].apply(lambda x: len(find_mentions(x)))
     if n_unique_mentions == True:
-        df['n_unique_mentions'] = df[text_col].apply(lambda x: len(set(extract_mentions(x))))
+        df['n_unique_mentions'] = df[text_col].apply(lambda x: len(set(find_mentions(x))))
     if n_characters:
         df['n_characters'] = df[text_col].apply(lambda x: len(x))
     if n_unique_characters:
@@ -136,11 +136,11 @@ def extract_features(df, text_col='text',
     if n_unique_urls:
         df['n_unique_urls'] = df[text_col].apply(lambda x: len(re.findall(r'([\w0-9._-]+@[\w0-9._-]+\.[\w0-9_-]+)', x)))
     if n_upper:
-        df['n_upper'] = df[text_col].apply(lambda x: len(extract_upper(x)))
+        df['n_upper'] = df[text_col].apply(lambda x: len(find_upper(x)))
     if n_lower:
-        df['n_lower'] = df[text_col].apply(lambda x: len(extract_lower(x)))
+        df['n_lower'] = df[text_col].apply(lambda x: len(find_lower(x)))
     if n_numbers:
-        df['n_numbers'] = df[text_col].apply(lambda x: len(extract_numbers(x)))
+        df['n_numbers'] = df[text_col].apply(lambda x: len(find_numbers(x)))
     if n_puncts:
         df['n_puncts'] = df[text_col].apply(lambda x: len([c for c in x if c in string.punctuation]))
     if n_exclaims:
@@ -148,7 +148,7 @@ def extract_features(df, text_col='text',
     if n_extraspace:
         df['n_extraspace'] = df[text_col].apply(lambda x: len(re.findall('  +', x)))
     if n_title:
-        df['n_title'] = df[text_col].apply(lambda x: len(extract_title(x)))
+        df['n_title'] = df[text_col].apply(lambda x: len(find_title(x)))
     if detect_lang:
         df['language'] = df[text_col].apply(lambda x: detect(x))
     if readability_score:
