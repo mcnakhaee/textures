@@ -4,7 +4,7 @@ import re
 from textblob import TextBlob
 import enchant
 import string
-from textfeatures.extract import *
+from textures.extract import *
 from langdetect import detect
 import textstat
 
@@ -48,6 +48,7 @@ def extract_features(df, text_col='text',
     :param n_unique_mentions: bool, default True, if True returns the number of unique mentions (tokens starting with @).
     :param n_words: bool, default True, if True returns the number of words found in the text column.
     :param n_unique_words:  bool, default True, if True returns the number of unique words.
+    :param n_stopwords:  bool, default True, if True returns the number of stop words.
     :param n_characters: bool, default True, if True returns the number of characters.
     :param n_unique_characters: bool, default True, if True returns the number of unique characters.
     :param n_unique_urls: bool, default True, if True returns the number of unique URLs.
@@ -135,12 +136,11 @@ def extract_features(df, text_col='text',
     if n_unique_urls:
         df['n_unique_urls'] = df[text_col].apply(lambda x: len(re.findall(r'([\w0-9._-]+@[\w0-9._-]+\.[\w0-9_-]+)', x)))
     if n_upper:
-        df['n_upper'] = df[text_col].apply(lambda x: len(re.findall(
-            r"(\b(?:[A-Z]+[a-z]?[A-Z]*|[A-Z]*[a-z]?[A-Z]+)\b(?:\s+(?:[A-Z]+[a-z]?[A-Z]*|[A-Z]*[a-z]?[A-Z]+)\b)*)", x)))
+        df['n_upper'] = df[text_col].apply(lambda x: len(extract_upper(x)))
     if n_lower:
-        df['n_lower'] = df[text_col].apply(lambda x: len(re.findall(r'[a-z]', x)))
+        df['n_lower'] = df[text_col].apply(lambda x: len(extract_lower(x)))
     if n_numbers:
-        df['n_numbers'] = df[text_col].apply(lambda x: len(re.findall(r'\d+', x)))
+        df['n_numbers'] = df[text_col].apply(lambda x: len(extract_numbers(x)))
     if n_puncts:
         df['n_puncts'] = df[text_col].apply(lambda x: len([c for c in x if c in string.punctuation]))
     if n_exclaims:
@@ -148,7 +148,7 @@ def extract_features(df, text_col='text',
     if n_extraspace:
         df['n_extraspace'] = df[text_col].apply(lambda x: len(re.findall('  +', x)))
     if n_title:
-        df['n_title'] = df[text_col].apply(lambda x: len(re.findall(r'(?=([A-Z][a-z]+\s+[A-Z][a-z]+))', x)))
+        df['n_title'] = df[text_col].apply(lambda x: len(extract_title(x)))
     if detect_lang:
         df['language'] = df[text_col].apply(lambda x: detect(x))
     if readability_score:
