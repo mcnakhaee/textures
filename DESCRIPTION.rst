@@ -1,40 +1,31 @@
 
-palmerpenguins
+Textures
 ~~~~~~~~~~~~~~~~~~~~~~
-The Palmer penguins dataset by Allison Horst, Alison Hill, and Kristen Gorman was first made publicly available as an R package. The goal of the Palmer Penguins dataset is to replace the highly overused Iris dataset for data exploration & visualization.
-Using this python package you can easily load the Palmer penguins into your python environment.
-
+Textures is a python package that allows you to extract some handy features and stats from text columns in Pandas DataFrames.
+It also includes some useful functions for cleaning text and extracting patterns (e.g., hashtags and emails from strings) and save your time looking for regular expression patterns on google and stackoverflow
 
 Overview
 ~~~~~~~~~~~~~~~~~~~~~~
-Size measurements, clutch observations, and blood isotope ratios for 344 adult foraging Adelie, Chinstrap, and Gentoo penguins observed on islands in the Palmer Archipelago near Palmer Station, Antarctica. Data were collected and made available by Dr. Kristen Gorman and the Palmer Station Long Term Ecological Research (LTER) Program.
+The package has three modules:
 
-Examples
+`features`: has a `extract_features` which allow you to compute and return more than 30 features from a Pandas DataFrame.
+
+`clean_text`: provides several functions for cleaning string inputs (e.g., remove hashtags).
+
+`find`: provides several functions for finding patterns such as hashtags in string inputs.
+Installation
 ~~~~~~~~~~~~~~~~~~~~~~
 
 
 
 License
 ~~~~~~~~~~~~~~~~~~~~~~
-Data are available by
-[CC-0](https://creativecommons.org/share-your-work/public-domain/cc0/) license in
-accordance with the [Palmer Station LTER Data Policy](http://pal.lternet.edu/data/policies)
-and the
-[LTER Data Access Policy for Type I data](https://lternet.edu/data-access-policy/).
 
 
 
 
 Bibliography
 ~~~~~~~~~~~~~~~~~~~~~~
-Gorman KB, Williams TD, Fraser WR (2014) Ecological Sexual Dimorphism and Environmental
-Variability within a Community of Antarctic Penguins (Genus Pygoscelis). PLoS ONE 9(3):
-e90081. https://doi.org/10.1371/journal.pone.0090081
 
 See also
 ~~~~~~~~~~~~~~~~~~~~~~
-More information about the dataset is available in
-[its official documentation](https://allisonhorst.github.io/palmerpenguins/).
-
-The Palmer penguins dataset in Julia:
-https://github.com/devmotion/PalmerPenguins.jl
