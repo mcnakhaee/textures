@@ -10,7 +10,7 @@ Textures (Text Features) is a python library that allows you to extract useful s
 
 Launch in [Pangeo Binder](https://pangeo-binder.readthedocs.io) (Interactive jupyter notebook/lab environment in the cloud).
 
-[![Binder](https://binder.pangeo.io/badge_logo.svg)](https://binder.pangeo.io/v2/gh/weiji14/deepbedmap/master)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mcnakhaee/textures/main)
 
 Or you can open a working notebook example in Google Colab.
 
