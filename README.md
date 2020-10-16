@@ -14,7 +14,7 @@ Launch in [Pangeo Binder](https://pangeo-binder.readthedocs.io) (Interactive jup
 
 Or you can open a working notebook example in Google Colab.
 
-[![Open All Collab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mcnakhaee/textures/Examples/textures.ipynb)
+[![Open All Collab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mcnakhaee/textures/blob/main/Examples/textures.ipynb)
 
 ## Installation
 
